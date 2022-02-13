@@ -1,0 +1,13 @@
+{
+    "detachKeys": "ctrl-q,ctrl-q",
+    "psFormat": {{ `"table {{.ID}}\\t{{.Names}}\\t{{.Image}}\\t{{.Command}}\\t{{.Status}}\\t{{.Ports}}\\t{{.Labels}}"` }}
+{{- if hasKey . "proxy" -}}
+    ,
+    "proxies": {
+        "default": {
+            "httpProxy": "http://{{ .proxy.host }}:{{ .proxy.port }}",
+            "httpsProxy": "https://{{ .proxy.host }}:{{ .proxy.port }}"
+        }
+    }
+{{ end }}
+}
